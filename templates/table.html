@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Corono Statistics</title>
+</head>
+<body>
+<h1 style="text-align: center;padding-top: 20px; margin-bottom: -750px;">Corono Stats in India </h1>
+<div class="container">
+<div class="table-responsive">
+<table class="table table-bordered table-striped" style=" margin: 50px;">
+    <tr>
+        <th style="width:10%;color:blue;">State</th>
+        <th style="width:10%;color:red;">#Affected</th>
+        <th style="width:10%;color:green">#Cured</th>
+        <th style="width:10%;color:black">#Died</th>
+    </tr>
+    {% for i in range(session['length']) %}
+    <tr>
+        <td scope="row">{{session['state'][i]}}</td>
+        <td>{{session['affected'][i]}}</td>
+        <td>{{session['cured'][i]}}</td>
+        <td>{{session['death'][i]}}</td>
+    </tr>
+        <br>
+    {% endfor %}
+</table>
+</div>
+</div>
+</body>
+</html>
