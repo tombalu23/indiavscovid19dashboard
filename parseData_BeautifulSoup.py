@@ -18,7 +18,7 @@ except:
 http = urllib3.PoolManager()
 source = http.request('GET', url=URL).data
 soup = bs.BeautifulSoup(source, 'html.parser')
-print(soup)
+#print(soup)
 
 # parse table locating div
 # parentDiv = soup.find("div", {"class": "content-newtab"})
