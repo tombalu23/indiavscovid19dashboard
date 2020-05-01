@@ -32,7 +32,7 @@ import os
 import bs4 as bs
 import urllib3
 
-
+import model
 def webscrape():
     URL = 'https://www.mohfw.gov.in/'
     FILEPATH = './output.csv'
@@ -128,11 +128,14 @@ def index():
     # data = list(dataset.csv.values.flatten())
 
     # table_html = table.to_html()
-    table_html = "Corono Information"
+
+    table_html = model.scrape_model()
+    # print(table_html)
     return render_template('index.html', data=table_html)
 @app.route("/table")
 def table():
     length = webscrape()
+    print(length)
     return render_template('table.html', **locals())
 @app.route("/bar")
 def bar():
