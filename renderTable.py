@@ -134,7 +134,10 @@ def index():
 def table():
     length = webscrape()
     return render_template('table.html', **locals())
-
+@app.route("/bar")
+def bar():
+    length = webscrape()
+    return render_template('bar_graph.html',max=17000,**locals())
 
 if __name__ == "__main__":
     app.debug=True

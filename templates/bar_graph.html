@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+</head>
+
+<body>
+  <center>
+    <h1>{{ title }}</h1>
+  </center>
+  <center>
+    <div class="container">
+       <canvas  style="width: 10px; height: 10px; margin: 50px;" id="bar-chart" ></canvas>
+       <canvas  style="width: 10px; height: 10px; margin: 50px;" id="cured" ></canvas>
+       <canvas  style="width: 10px; height: 10px; margin: 50px;" id="death" ></canvas>
+
+    </div>
+
+    <script>
+      new Chart(document.getElementById("bar-chart"), {
+        type: 'horizontalBar',
+        data: {
+          labels : [
+              {% for item in session['state'] %}
+               "{{ item }}",
+              {% endfor %}
+        ],
+          datasets: [
+            {
+              label: "Population (millions)",
+              backgroundColor: "#ff0000",
+              //fillColor: "rgba(255,0,0,0.2)",
+              strokeColor: "rgba(255,0,0,1)",
+              pointColor: "rgba(255,0,0,1)",
+              data : [
+                {% for item in session['affected'] %}
+                   "{{ item }}",
+                  {% endfor %}
+            ]
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: '#Confirmed Cases Statewise'
+          }
+        }
+});
+
+      new Chart(document.getElementById("cured"), {
+        type: 'horizontalBar',
+        data: {
+          labels : [
+              {% for item in session['state'] %}
+               "{{ item }}",
+              {% endfor %}
+        ],
+          datasets: [
+            {
+              label: "Population (millions)",
+              backgroundColor: "#00ff00",
+              //fillColor: "rgba(255,0,0,0.2)",
+              strokeColor: "rgba(255,0,0,1)",
+              pointColor: "rgba(255,0,0,1)",
+              data : [
+                {% for item in session['cured'] %}
+                   "{{ item }}",
+                  {% endfor %}
+            ]
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: '#Cured Cases Statewise'
+          }
+        }
+});
+
+      new Chart(document.getElementById("death"), {
+        type: 'horizontalBar',
+        data: {
+          labels : [
+              {% for item in session['state'] %}
+               "{{ item }}",
+              {% endfor %}
+        ],
+          datasets: [
+            {
+              label: "Population",
+              backgroundColor: "#000000",
+              //fillColor: "rgba(255,0,0,0.2)",
+              strokeColor: "rgba(255,0,0,1)",
+              pointColor: "rgba(255,0,0,1)",
+              data : [
+                {% for item in session['death'] %}
+                   "{{ item }}",
+                  {% endfor %}
+            ]
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: '#Death Cases Statewise'
+          }
+        }
+});
+    </script>
+  </center>
+</body>
+</html>
