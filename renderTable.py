@@ -35,10 +35,10 @@ from flask import session
 
 import model
 
-urllib3.disable_warnings(urllib3.exceptions.MaxRetryError)
+#urllib3.disable_warnings(urllib3.exceptions.MaxRetryError)
 
-if (not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None)):
-    ssl._create_default_https_context = ssl._create_unverified_context
+# if (not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None)):
+#     ssl._create_default_https_context = ssl._create_unverified_context
 
 def webscrape():
     URL = 'https://www.mohfw.gov.in/'
