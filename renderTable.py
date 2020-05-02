@@ -22,17 +22,24 @@
 # if __name__ == "__main__":
 #     app.run()
 
-import pandas as pd
-import tablib
-from flask import Flask, render_template
-from flask import session
+import bs4 as bs
 import csv
 import os
-
-import bs4 as bs
+import os
+import pandas as pd
+import ssl
+import tablib
 import urllib3
+from flask import Flask, render_template
+from flask import session
 
 import model
+
+urllib3.disable_warnings(urllib3.exceptions.MaxRetryError)
+
+if (not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None)):
+    ssl._create_default_https_context = ssl._create_unverified_context
+
 def webscrape():
     URL = 'https://www.mohfw.gov.in/'
     FILEPATH = './output.csv'
@@ -45,7 +52,7 @@ def webscrape():
 
     # connect to the website
     http = urllib3.PoolManager()
-    source = http.request('GET', url=URL).data
+    source = http.request('GET', url=URL, verify=False).data
     soup = bs.BeautifulSoup(source, 'html.parser')
     # print(soup)
 
