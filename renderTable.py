@@ -119,6 +119,33 @@ def webscrape():
     return length
 
 
+def scrape_index():
+    URL = 'https://www.mohfw.gov.in/'
+    http = urllib3.PoolManager()
+    source = http.request('GET', url=URL).data
+    soup = bs.BeautifulSoup(source, 'html.parser')
+    parentDiv = soup.find("div", {"class": "site-stats-count"})
+
+    cases = []
+    for li in parentDiv.findAll('li'):
+        try:
+            lis = li.find('strong').text
+
+            cases.append(lis)
+        except Exception as e:
+            lis = None
+
+    cured = int(cases[1])
+    session['cured'] = cured
+    death = int(cases[2])
+    session['death'] = death
+    active = int(cases[0])
+    session['active'] = active
+    total_cases = cured + death + active + int(cases[3])
+    session['total_cases'] = total_cases
+    print(total_cases)
+
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 # dataset = tablib.Dataset()
@@ -127,7 +154,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 # table = pd.read_csv('./output.csv')
 
 
-@app.route("/")
+@app.route("/",methods=['GET', 'POST'])
 def index():
     # data = dataset
     # return dataset.html
@@ -138,7 +165,8 @@ def index():
 
     table_html = model.scrape_model()
     # print(table_html)
-    return render_template('index.html', data=table_html)
+    scrape_index()
+    return render_template('index.html', data=table_html,**locals())
 @app.route("/table")
 def table():
     length = webscrape()

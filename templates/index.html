@@ -15,7 +15,7 @@
       <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
         <div class="card-header" style="font-size: 21px">Total Confirmed Cases</div>
         <div class="card-body">
-          <h1 class="card-title">37,750</h1>
+          <h1 class="card-title">{{session['total_cases']}}</h1>
 <!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
       </div>
@@ -25,7 +25,7 @@
       <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
         <div class="card-header" style="font-size: 21px">Active Cases</div>
         <div class="card-body">
-          <h1 class="card-title">37,750</h1>
+          <h1 class="card-title">{{session['active']}}</h1>
 <!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
       </div>
@@ -35,7 +35,7 @@
       <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
         <div class="card-header" style="font-size: 21px">Cured</div>
         <div class="card-body">
-          <h1 class="card-title">37,750</h1>
+          <h1 class="card-title">{{session['cured']}}</h1>
 <!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
       </div>
@@ -45,7 +45,7 @@
       <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
         <div class="card-header" style="font-size: 21px">Deaths</div>
         <div class="card-body">
-          <h1 class="card-title">37,750</h1>
+          <h1 class="card-title">{{session['death']}}</h1>
 <!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
       </div>
@@ -72,8 +72,17 @@
 </div>
 
 <div class="container" style="text-align: center; margin-top: 50px">
-<button type="button" class="btn btn-primary btn-lg" style="text-align: center; display: inline-block; width:400px">State Wise Statistics</button>
-<button type="button" class="btn btn-primary btn-lg" style= "text-align: center; display: inline-block; width:400px">Graphs</button>
+  <div class="row">
+    <div class="col-md-6">
+  <form method="POST" action="/table">
+    <button type="button" onclick="window.location.href='{{ url_for('table') }}'" class="btn btn-primary btn-lg" style="text-align: center; display: inline-block; width:400px">State Wise Statistics</button>
+  </form>
+    </div>
+    <div class="col-md-6">
+  <form method="POST" action="/bar">
+    <button type="button" onclick="window.location.href='{{ url_for('bar') }}'" class="btn btn-primary btn-lg" style= "text-align: center; display: inline-block; width:400px">Graphs</button>
+  </form></div>
+  </div>
 </div>
 
 </body>
