@@ -52,7 +52,7 @@ def webscrape():
 
     # connect to the website
     http = urllib3.PoolManager()
-    source = http.request('GET', url=URL, verify=False).data
+    source = http.request('GET', url=URL).data
     soup = bs.BeautifulSoup(source, 'html.parser')
     # print(soup)
 

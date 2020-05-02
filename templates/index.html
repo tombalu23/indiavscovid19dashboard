@@ -2,15 +2,79 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!--  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}"/>-->
-  <title>Show CSV</title>
+  <title>COVID19 India Statistics</title>
 </head>
-<body>
-  <div class="table">
+<body class="p-3 mb-2 bg-dark text-white">
+<h1 class="p-3 mb-2 bg-info text-white" style="text-align: center;padding-top: 20px; margin-bottom: -750px;">COVID19 India Statistics</h1>
+
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+        <div class="card-header" style="font-size: 21px">Total Confirmed Cases</div>
+        <div class="card-body">
+          <h1 class="card-title">37,750</h1>
+<!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header" style="font-size: 21px">Active Cases</div>
+        <div class="card-body">
+          <h1 class="card-title">37,750</h1>
+<!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header" style="font-size: 21px">Cured</div>
+        <div class="card-body">
+          <h1 class="card-title">37,750</h1>
+<!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header" style="font-size: 21px">Deaths</div>
+        <div class="card-body">
+          <h1 class="card-title">37,750</h1>
+<!--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+</div>
+
+
+<div class="container" style="text-align: center">
+  <div class="p-3 mb-2 bg-light text-dark">
     {% block body %}
-    The no of positive prediction for tomorrow is:
+    New cases predicted for tomorrow:
     {{ data|safe }}
     {% endblock %}
   </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 50px">
+<button type="button" class="btn btn-primary btn-lg" style="text-align: center; display: inline-block; width:400px">State Wise Statistics</button>
+<button type="button" class="btn btn-primary btn-lg" style= "text-align: center; display: inline-block; width:400px">Graphs</button>
+</div>
+
 </body>
 </html>
