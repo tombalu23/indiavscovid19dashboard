@@ -178,10 +178,13 @@ def bar():
     length = webscrape()
     return render_template('bar_graph.html',max=17000,**locals())
 
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template("500.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("notfound.html", index='index.html')
-
 if __name__ == "__main__":
     app.debug=True
     app.run()
