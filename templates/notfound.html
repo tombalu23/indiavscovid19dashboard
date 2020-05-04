@@ -93,7 +93,7 @@ setTimeout("redirect()", 1000)
 
 <body onload="redirect()">
   <!-- This file lives in public/404.html -->
-  <img src="light-bulb.png" class="image">
+  <img src="{{url_for('static', filename='light-bulb.png')}}" align="middle" />
   <div>
     <div class="dialog">
       <h1>Hey, who turned off the lights?</h1>
