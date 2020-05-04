@@ -154,7 +154,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 # table = pd.read_csv('./output.csv')
 
 
-@app.route("/",methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     # data = dataset
     # return dataset.html
@@ -172,10 +172,15 @@ def table():
     length = webscrape()
     print(length)
     return render_template('table.html', **locals())
+
 @app.route("/bar")
 def bar():
     length = webscrape()
     return render_template('bar_graph.html',max=17000,**locals())
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("notfound.html", index='index.html')
 
 if __name__ == "__main__":
     app.debug=True
