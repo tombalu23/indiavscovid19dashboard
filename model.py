@@ -12,16 +12,19 @@ def scrape_model():
     india = data["India"]
     india_data = [d.get("confirmed") for d in india]
     x = []
+    print(india_data)
+    india_data1 = []
+    india_data1.append(india_data[0])
     for i in range(0, len(india_data)):
         x.append(i)
         if i>0:
-            india_data[i]=india_data[i]-india_data[i-1]
-    z = len(india_data)
+            india_data1.append(india_data[i]-india_data[i-1])
+    z = len(india_data1)
 
-    #print(x)
-    #print(india_data)
+    print(x)
+    print(india_data1)
     x = np.array(x).reshape(-1, 1)
-    y = np.array(india_data)
+    y = np.array(india_data1)
 
 
     polynomial_features = PolynomialFeatures(degree=5)
