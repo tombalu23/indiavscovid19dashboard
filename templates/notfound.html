@@ -93,13 +93,14 @@ setTimeout("redirect()", 1000)
 
 <body onload="redirect()">
   <!-- This file lives in public/404.html -->
-  <img src="{{url_for('static', filename='light-bulb.png')}}" align="middle" />
+  <img src="{{url_for('static', filename='light-bulb.png')}}" />
   <div>
     <div class="dialog">
       <h1>Hey, who turned off the lights?</h1>
       <p>We were unable to find the page you were looking for.</p>
     </div>
   </div>
-</body>
 <footer><a href="/">Go to Home Page</a></footer>
+</body>
+
 </html>
