@@ -16,7 +16,7 @@ https://pomber.github.io/covid19/timeseries.json
 
 **How to run**
 1. Make sure all the imported libraries are available on your system.
-2. Run the renderDashboard.py file
+2. Run the renderTable.py file
 3. Visit the URL 127.0.0.1:5000 on your browser
 
 **Contributors**
