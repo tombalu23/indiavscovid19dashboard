@@ -28,7 +28,6 @@ import os
 import os
 import pandas as pd
 import ssl
-import tablib
 import urllib3
 from flask import Flask, render_template
 from flask import session
