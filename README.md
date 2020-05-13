@@ -19,6 +19,8 @@ https://pomber.github.io/covid19/timeseries.json
 2. Run the renderTable.py file
 3. Visit the URL 127.0.0.1:5000 on your browser
 
+It is deployed [here](https://indiavscovid19.herokuapp.com/), so why don't you check it out yourself!
+
 **Contributors**
 
 [Balaji R K](https://github.com/tombalu23)
